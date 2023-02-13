@@ -1,8 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
@@ -20,13 +17,19 @@ public class BasicActionTest {
 
         WebElement basicPageLink = driver.findElement(By.linkText("Podstawowa strona testowa"));
         System.out.println(basicPageLink.getText());
-
         basicPageLink.click();
         driver.findElement(By.id("fname")).sendKeys("Sebastian");
         WebElement usernameInput = driver.findElement(By.name("username"));
         usernameInput.clear();
         usernameInput.sendKeys("admin");
-        usernameInput.sendKeys(Keys.TAB);
+        System.out.println(usernameInput.getText());
+        System.out.println(usernameInput.getAttribute("value"));
+        usernameInput.sendKeys(Keys.ENTER);
+
+        Alert firstAlert = driver.switchTo().alert();
+        firstAlert.accept();
+        driver.switchTo().alert().accept();
+
 
         driver.findElement(By.cssSelector("[type='checkbox']")).click();
         driver.findElement(By.cssSelector("[value='male']")).click();
@@ -39,6 +42,16 @@ public class BasicActionTest {
         for (WebElement option : options) {
             System.out.println(option.getText());
         }
+
+        SelectCheck selectCheck = new SelectCheck();
+        System.out.println(selectCheck.checkOption("Audi", selectCar));
+        System.out.println(selectCheck.checkOption("Jeep", selectCar));
+
+        WebElement para = driver.findElement(By.cssSelector(".topSecret"));
+        System.out.println("By text: " + para.getText());
+        System.out.println("By attr value: " + para.getAttribute("value"));
+        System.out.println("By attr txt cont: " + para.getAttribute("textContent"));
+
 
     }
 }
