@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SecondTest {
+public class SeconddTest {
 
     @Test
     public void findSeleniumTutorial() {

@@ -5,7 +5,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class FirstTest {
+public class FirsttTest {
 
     @Test
     public void openGooglePage() {
